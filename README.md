@@ -2,7 +2,7 @@
 
 Apex-level live spark desk for bedroom producers and AI-music finishers.
 
-Elevated from NextSparkUltra with full multi-chair 16-step grids (kick, snare, hat, bass, piano), selectable 4- or 8-bar length, hardware MIDI live-trigger support, and recipe presets that populate the grids.
+Elevated from NextSparkUltra with full multi-chair 16-step grids (kick, snare, hat, bass, piano), selectable 4- or 8-bar length, hardware MIDI live-trigger support, and recipe presets that populate the grids then remain fully editable.
 
 **Free.**
 
@@ -11,7 +11,7 @@ Elevated from NextSparkUltra with full multi-chair 16-step grids (kick, snare, h
 - Full interactive step grids per chair — click to toggle hits live; changes apply on next step
 - Selectable 4- or 8-bar length (persisted)
 - Recipe presets that seed the grids (then fully editable)
-- Hardware MIDI keyboard: low notes trigger drums, mid bass, high piano (Web MIDI)
+- Hardware MIDI keyboard: low notes trigger drums, mid bass, high piano (Web MIDI note on/velocity)
 - Deterministic swing on odd 16ths; downbeats exact
 - Playhead from AudioContext.currentTime in rAF
 - Full localStorage persistence of all controls + patterns
@@ -19,6 +19,7 @@ Elevated from NextSparkUltra with full multi-chair 16-step grids (kick, snare, h
 - Dual WAV (folded seamless + with-tail), matching multi-track MIDI
 - Samples pinned to PreEight@d58301e4a494555f411a2afbc448b724136eee76
 - Missing instrument naming
+- Pitch shifts clamped to ±4 semitones with revoicing
 
 ## Engine compliance (rules 1–4)
 
@@ -29,7 +30,7 @@ Elevated from NextSparkUltra with full multi-chair 16-step grids (kick, snare, h
 
 ## Acceptance checks (section 9)
 
-1. Export at 92 BPM, 8 bars, 48 kHz: length exactly 1,001,739 samples. First transient at sample 0.
+1. Export at 92 BPM, 8 bars, 48 kHz: length exactly 1,001,739 samples. First transient at sample 0 (t=0 in OfflineAudioContext).
 2. Seamless loop: tail folded; no clicks or drift when looped in DAW at 92 BPM.
 3. Background tab: visibilitychange stops cleanly; no stacked notes on return.
 4. Live changes: scheduler reads current state every step; changes heard within one bar.
@@ -38,3 +39,5 @@ Elevated from NextSparkUltra with full multi-chair 16-step grids (kick, snare, h
 7. Grep: no @main/@gh-pages, no Math.random in export, voice names match samples (kick, snare, hat, bass, piano, guitar).
 
 Drop the folded WAV on bar 1 of your DAW. Loop is seamless.
+
+Live at: https://workinwithai-create.github.io/ApexSpark/
